@@ -1,0 +1,774 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #0a0a2a 0%, #1a1a3a 50%, #0c0c2c 100%);
+    color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 100vh;
+}
+
+/* Стили для экранов */
+.screen {
+    display: none;
+    position: relative;
+    min-height: 100vh;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.screen.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Главный экран */
+#main-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 60px;
+}
+
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.particles::before {
+    content: '';
+    position: absolute;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, rgba(20, 60, 220, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    animation: float 20s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    100% { transform: translate(-100px, -100px) rotate(360deg); }
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+}
+
+/* Аватар */
+.avatar {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 30px;
+}
+
+.avatar-circle {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: bold;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 0 40px rgba(30, 60, 220, 0.5);
+    animation: pulse 3s infinite alternate;
+}
+
+.avatar-glow {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(135deg, #1e3c72, #4a7dff);
+    border-radius: 50%;
+    filter: blur(20px);
+    opacity: 0.6;
+    z-index: 1;
+    animation: glow 3s infinite alternate;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 40px rgba(30, 60, 220, 0.5); }
+    100% { transform: scale(1.05); box-shadow: 0 0 60px rgba(30, 60, 220, 0.8); }
+}
+
+@keyframes glow {
+    0% { opacity: 0.4; }
+    100% { opacity: 0.8; }
+}
+
+/* Имя и заголовок */
+.name {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    background: linear-gradient(to right, #4a7dff, #8a9eff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 30px rgba(74, 125, 255, 0.3);
+}
+
+.animate-glow {
+    animation: text-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes text-glow {
+    from { text-shadow: 0 0 10px rgba(74, 125, 255, 0.5); }
+    to { text-shadow: 0 0 20px rgba(74, 125, 255, 0.8), 0 0 30px rgba(74, 125, 255, 0.4); }
+}
+
+.tagline {
+    font-size: 1.2rem;
+    color: #a0b3ff;
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Цитата */
+.quote-box {
+    background: rgba(20, 30, 80, 0.4);
+    border-left: 4px solid #4a7dff;
+    padding: 25px;
+    margin: 40px auto;
+    border-radius: 10px;
+    max-width: 700px;
+    position: relative;
+    backdrop-filter: blur(10px);
+    animation: slide-up 0.8s ease-out;
+}
+
+.quote-box i {
+    color: #4a7dff;
+    font-size: 1.5rem;
+}
+
+.quote-box i.fa-quote-left {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+.quote-box i.fa-quote-right {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
+
+.quote {
+    font-size: 1.3rem;
+    font-style: italic;
+    line-height: 1.6;
+    padding: 0 20px;
+}
+
+/* Кнопки */
+.buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin: 40px 0;
+    flex-wrap: wrap;
+}
+
+.btn-primary, .btn-secondary, .btn-contact, .project-btn, .back-btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #1e3c72 0%, #4a7dff 100%);
+    color: white;
+    box-shadow: 0 5px 20px rgba(30, 60, 220, 0.4);
+}
+
+.btn-secondary {
+    background: rgba(30, 60, 220, 0.2);
+    color: #a0b3ff;
+    border: 2px solid #4a7dff;
+}
+
+.btn-contact {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    margin: 0 auto;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    box-shadow: 0 5px 25px rgba(30, 60, 220, 0.5);
+}
+
+.btn-primary:hover, .btn-secondary:hover, .btn-contact:hover, .project-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(30, 60, 220, 0.6);
+}
+
+.btn-primary::after, .btn-secondary::after, .btn-contact::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.7s;
+}
+
+.btn-primary:hover::after, .btn-secondary:hover::after, .btn-contact:hover::after {
+    left: 100%;
+}
+
+/* Подсказка прокрутки */
+.scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #a0b3ff;
+    animation: bounce 2s infinite;
+}
+
+.scroll-hint i {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+    40% { transform: translateY(-10px) translateX(-50%); }
+    60% { transform: translateY(-5px) translateX(-50%); }
+}
+
+/* Заголовки экранов */
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    padding-top: 20px;
+}
+
+.header h2 {
+    font-size: 2.5rem;
+    background: linear-gradient(to right, #4a7dff, #8a9eff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-left: 20px;
+}
+
+.back-btn {
+    background: rgba(30, 60, 220, 0.2);
+    color: #a0b3ff;
+    border: 2px solid #4a7dff;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+}
+
+/* Карточки "Обо мне" */
+.about-card {
+    background: rgba(20, 30, 80, 0.4);
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 30px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(74, 125, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: slide-up 0.8s ease-out;
+}
+
+.about-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(30, 60, 220, 0.3);
+}
+
+.card-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #1e3c72 0%, #4a7dff 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.about-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #8a9eff;
+}
+
+.about-card p {
+    color: #c0c9ff;
+    line-height: 1.6;
+}
+
+/* Статистика */
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 20px;
+    background: rgba(20, 30, 80, 0.4);
+    border-radius: 10px;
+    min-width: 150px;
+    border: 1px solid rgba(74, 125, 255, 0.1);
+}
+
+.stat-item h4 {
+    font-size: 2.5rem;
+    color: #4a7dff;
+    margin-bottom: 10px;
+}
+
+.stat-item p {
+    color: #a0b3ff;
+    font-size: 0.9rem;
+}
+
+/* Карточки проектов */
+.project-card {
+    background: rgba(20, 30, 80, 0.4);
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 30px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(74, 125, 255, 0.2);
+    transition: all 0.3s ease;
+    animation: slide-up 0.8s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #4a7dff, transparent);
+    transition: left 0.7s;
+}
+
+.project-card:hover::before {
+    left: 100%;
+}
+
+.project-badge {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #1e3c72 0%, #4a7dff 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 5px 15px rgba(30, 60, 220, 0.5);
+}
+
+.project-card h3 {
+    font-size: 1.8rem;
+    color: #8a9eff;
+    margin-bottom: 15px;
+}
+
+.project-card p {
+    color: #c0c9ff;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.project-btn {
+    background: linear-gradient(135deg, #1e3c72 0%, #4a7dff 100%);
+    color: white;
+    padding: 12px 25px;
+    width: 100%;
+}
+
+/* Быстрые ссылки */
+.project-links {
+    margin-top: 50px;
+    padding: 30px;
+    background: rgba(20, 30, 80, 0.4);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.project-links h3 {
+    font-size: 1.8rem;
+    color: #8a9eff;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.link-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: rgba(30, 60, 220, 0.2);
+    border-radius: 10px;
+    text-decoration: none;
+    color: #c0c9ff;
+    border: 1px solid rgba(74, 125, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.link-item:hover {
+    background: rgba(30, 60, 220, 0.4);
+    transform: translateX(10px);
+    color: white;
+}
+
+.link-item i {
+    font-size: 1.5rem;
+    color: #4a7dff;
+}
+
+.link-item span {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* Футер */
+footer {
+    margin-top: 60px;
+    padding: 30px 0;
+    border-top: 1px solid rgba(74, 125, 255, 0.2);
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+footer p {
+    color: #a0b3ff;
+}
+
+.social {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.social span {
+    color: #a0b3ff;
+}
+
+.social a {
+    color: #4a7dff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.social a:hover {
+    color: #8a9eff;
+    text-decoration: underline;
+}
+
+/* Анимации */
+@keyframes slide-up {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .name {
+        font-size: 2.5rem;
+    }
+    
+    .quote {
+        font-size: 1.1rem;
+    }
+    
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .header h2 {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .stats {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+script.js
+javascript
+// Функция для переключения экранов
+function changeScreen(screenId) {
+    // Скрыть все экраны
+    const screens = document.querySelectorAll('.screen');
+    screens.forEach(screen => {
+        screen.classList.remove('active');
+    });
+    
+    // Показать выбранный экран
+    let targetScreen;
+    switch(screenId) {
+        case 'main':
+            targetScreen = document.getElementById('main-screen');
+            break;
+        case 'about':
+            targetScreen = document.getElementById('about-screen');
+            break;
+        case 'projects':
+            targetScreen = document.getElementById('projects-screen');
+            break;
+        default:
+            targetScreen = document.getElementById('main-screen');
+    }
+    
+    if (targetScreen) {
+        targetScreen.classList.add('active');
+        
+        // Прокрутка к верху экрана
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+}
+
+// Создание частиц на главном экране
+function createParticles() {
+    const particlesContainer = document.querySelector('.particles');
+    
+    // Очищаем существующие частицы
+    particlesContainer.innerHTML = '';
+    
+    // Создаем 20 частиц
+    for (let i = 0; i < 20; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        // Случайные свойства
+        const size = Math.random() * 5 + 2;
+        const posX = Math.random() * 100;
+        const posY = Math.random() * 100;
+        const duration = Math.random() * 20 + 10;
+        const delay = Math.random() * 5;
+        
+        // Применяем стили
+        particle.style.cssText = `
+            position: absolute;
+            width: ${size}px;
+            height: ${size}px;
+            background: rgba(74, 125, 255, ${Math.random() * 0.5 + 0.2});
+            border-radius: 50%;
+            left: ${posX}%;
+            top: ${posY}%;
+            animation: float-particle ${duration}s linear ${delay}s infinite;
+            z-index: 1;
+        `;
+        
+        particlesContainer.appendChild(particle);
+    }
+    
+    // Добавляем стили для анимации частиц
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes float-particle {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px) rotate(${Math.random() * 360}deg);
+                opacity: 0;
+            }
+        }
+    `;
+    
+    document.head.appendChild(style);
+}
+
+// Плавное появление элементов при скролле
+function setupScrollAnimations() {
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+    
+    // Наблюдаем за всеми анимируемыми элементами
+    document.querySelectorAll('.about-card, .project-card, .stat-item').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        observer.observe(el);
+    });
+}
+
+// Инициализация при загрузке страницы
+document.addEventListener('DOMContentLoaded', function() {
+    // Создаем частицы
+    createParticles();
+    
+    // Настраиваем анимации при скролле
+    setupScrollAnimations();
+    
+    // Обработка кликов по ссылкам проектов (кроме Telegram)
+    document.querySelectorAll('.project-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            if (!this.getAttribute('onclick')) {
+                e.preventDefault();
+                alert('Этот проект скоро будет доступен! Следите за обновлениями в Telegram.');
+            }
+        });
+    });
+    
+    // Анимация для кнопок при наведении
+    document.querySelectorAll('.btn-primary, .btn-secondary, .btn-contact').forEach(btn => {
+        btn.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-5px)';
+        });
+        
+        btn.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+    });
+    
+    // Добавляем интерактивность для карточек
+    document.querySelectorAll('.about-card, .project-card').forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+    });
+});
+
+// Добавляем эффект параллакса для фона
+window.addEventListener('scroll', function() {
+    const scrolled = window.pageYOffset;
+    const particles = document.querySelector('.particles');
+    
+    if (particles) {
+        particles.style.transform = `translateY(${scrolled * 0.5}px)`;
+    }
+});
+Инструкция по развертыванию на GitHub:
+Создайте новый репозиторий на GitHub
+
+Скопируйте каждый из приведенных выше кодов в соответствующие файлы:
+
+index.html
+
+style.css
+
+script.js
+
+Загрузите эти файлы в корень вашего репозитория
+
+В настройках репозитория перейдите в раздел "Pages"
+
+В разделе "Source" выберите ветку (обычно main) и папку / (root)
+
+Сохраните изменения - ваш сайт будет доступен по адресу https://ваш-никнейм.github.io/имя-репозитория/
+
+Сайт имеет три основных экрана с плавными переходами, темно-синюю цветовую палитру с различными оттенками, анимации при наведении и загрузке. Все ссылки на Telegram рабочие, включая переход к вашему проекту.
+
+
