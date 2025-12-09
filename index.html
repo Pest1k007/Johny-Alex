@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Johny Alex | Телеграм Проекты</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Orbitron:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Главный экран -->
+        <section id="main-screen" class="screen active">
+            <div class="particles"></div>
+            <div class="content">
+                <div class="avatar">
+                    <div class="avatar-circle">
+                        <span class="avatar-text">JA</span>
+                    </div>
+                    <div class="avatar-glow"></div>
+                </div>
+                <h1 class="name animate-glow">Johny Alex</h1>
+                <p class="tagline">Создатель Telegram-проектов & NFT энтузиаст</p>
+                
+                <div class="quote-box">
+                    <i class="fas fa-quote-left"></i>
+                    <p class="quote">"Деньги - это не главное. Но когда их нет, становится ясно, что все остальное - второстепенное."</p>
+                    <i class="fas fa-quote-right"></i>
+                </div>
+                
+                <div class="buttons">
+                    <button class="btn-primary" onclick="changeScreen('projects')">
+                        <span>Мои проекты</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button class="btn-secondary" onclick="changeScreen('about')">
+                        <span>Обо мне</span>
+                        <i class="fas fa-user"></i>
+                    </button>
+                </div>
+                
+                <button class="btn-contact" onclick="window.open('https://t.me/inxse', '_blank')">
+                    <i class="fab fa-telegram"></i>
+                    Перейти в личные сообщения
+                </button>
+            </div>
+            
+            <div class="scroll-hint">
+                <i class="fas fa-chevron-down"></i>
+                <p>Листайте вниз</p>
+            </div>
+        </section>
+
+        <!-- Экран "Обо мне" -->
+        <section id="about-screen" class="screen">
+            <div class="header">
+                <button class="back-btn" onclick="changeScreen('main')">
+                    <i class="fas fa-arrow-left"></i>
+                    Назад
+                </button>
+                <h2>Обо мне</h2>
+            </div>
+            
+            <div class="content">
+                <div class="about-card">
+                    <div class="card-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3>Кто я?</h3>
+                    <p>Приветствую! Я Johny Alex - разработчик и предприниматель в мире Telegram и blockchain технологий. Создаю инновационные проекты, которые приносят реальную пользу и доход.</p>
+                </div>
+                
+                <div class="about-card">
+                    <div class="card-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Моя философия</h3>
+                    <p>Верю в силу автоматизации и умных решений. Каждый мой проект - это инструмент для заработка, экономии времени или получения уникальных возможностей.</p>
+                </div>
+                
+                <div class="about-card">
+                    <div class="card-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>Навыки</h3>
+                    <p>Telegram Bot API, Blockchain, NFT, Smart Contracts, Web3 разработка, UX/UI дизайн, маркетинг цифровых продуктов.</p>
+                </div>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <h4>10+</h4>
+                        <p>Завершенных проектов</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>5K+</h4>
+                        <p>Пользователей</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>100%</h4>
+                        <p>Фокусировка на результате</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Экран "Проекты" -->
+        <section id="projects-screen" class="screen">
+            <div class="header">
+                <button class="back-btn" onclick="changeScreen('main')">
+                    <i class="fas fa-arrow-left"></i>
+                    Назад
+                </button>
+                <h2>Мои проекты</h2>
+            </div>
+            
+            <div class="content">
+                <div class="project-card">
+                    <div class="project-badge">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h3>Telegram Подарки</h3>
+                    <p>Эксклюзивные подарки и бонусы для участников моих Telegram-проектов. Уникальные предложения, которые доступны только избранным.</p>
+                    <button class="project-btn" onclick="window.open('https://t.me/pro_enfte', '_blank')">
+                        <span>Перейти к проекту</span>
+                        <i class="fas fa-external-link-alt"></i>
+                    </button>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-badge">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Crypto Assistant Bot</h3>
+                    <p>Умный бот для трейдинга и анализа крипторынка. Получайте сигналы, аналитику и автоматизируйте свою торговлю.</p>
+                    <button class="project-btn" onclick="alert('Скоро будет доступно!')">
+                        <span>Скоро будет</span>
+                        <i class="fas fa-clock"></i>
+                    </button>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-badge">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h3>NFT Коллекция</h3>
+                    <p>Эксклюзивная коллекция NFT, дающая доступ к приватным каналам и специальным возможностям в моих проектах.</p>
+                    <button class="project-btn" onclick="alert('Скоро будет доступно!')">
+                        <span>Скоро будет</span>
+                        <i class="fas fa-clock"></i>
+                    </button>
+                </div>
+                
+                <div class="project-links">
+                    <h3>Быстрые ссылки</h3>
+                    <div class="links">
+                        <a href="https://t.me/pro_enfte" target="_blank" class="link-item">
+                            <i class="fab fa-telegram"></i>
+                            <span>Pro NFT Project</span>
+                        </a>
+                        <a href="https://t.me/inxse" target="_blank" class="link-item">
+                            <i class="fas fa-comment-dots"></i>
+                            <span>Личные сообщения</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Футер -->
+        <footer>
+            <div class="footer-content">
+                <p>© 2023 Johny Alex. Все права защищены.</p>
+                <div class="social">
+                    <span>Telegram:</span>
+                    <a href="https://t.me/inxse" target="_blank">@inxse</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
